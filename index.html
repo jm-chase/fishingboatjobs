@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishing Boat Jobs - Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.05em;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231e293b" width="1200" height="800"/><g fill-opacity="0.1"><polygon fill="%23000" points="1200 0 900 800 1200 800"/><polygon fill="%23000" points="0 800 300 0 0 0"/><polygon fill="%23334155" points="600 400 800 800 1000 400"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .grain {
+            position: relative;
+        }
+        
+        .grain::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        
+        .form-input {
+            background: rgba(30, 41, 59, 0.5);
+            border: 2px solid #475569;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: #f97316;
+            outline: none;
+        }
+        
+        .submit-btn {
+            background: #f97316;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(249, 115, 22, 0.4);
+        }
+        
+        .submit-btn:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(249, 115, 22, 0.6);
+        }
+        
+        .success-message {
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="hero-bg grain min-h-screen text-slate-100">
+    <div class="min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="max-w-3xl w-full">
+            <!-- Logo/Brand -->
+            <div class="text-center mb-8">
+                <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-slate-100 mb-4 tracking-wider">
+                    FISHING BOAT JOBS
+                </h1>
+                <div class="h-1 w-32 bg-orange-500 mx-auto"></div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="bg-slate-800/30 backdrop-blur-sm border-2 border-slate-700 p-8 md:p-12 rounded-lg shadow-2xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4 text-center">
+                    LAUNCHING SOON
+                </h2>
+                
+                <p class="text-lg md:text-xl text-white mb-8 text-center leading-relaxed">
+                    Connecting commercial fishing crews with vessels and fleets. 
+                    Whether you're looking to hire experienced deckhands or find your next voyage, 
+                    we're building the platform for you.
+                </p>
+                
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message bg-green-900/50 border-2 border-green-500 text-green-100 px-6 py-4 rounded-lg mb-6 text-center">
+                    <p class="font-semibold">Thanks for signing up! We'll be in touch soon.</p>
+                </div>
+                
+                <!-- Email Form -->
+                <form id="emailForm" class="space-y-4">
+                    <div>
+                        <input 
+                            type="email" 
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email" 
+                            required
+                            class="form-input w-full px-6 py-4 text-lg text-white rounded-lg placeholder-white/70"
+                        >
+                    </div>
+                    
+                    <div>
+                        <select 
+                            id="userType"
+                            name="userType"
+                            required
+                            class="form-input w-full px-6 py-4 text-lg text-white rounded-lg"
+                        >
+                            <option value="" disabled selected>I'm looking to...</option>
+                            <option value="hire">Hire crew for my vessel/fleet</option>
+                            <option value="work">Find work on a fishing vessel</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                    
+                    <button 
+                        type="submit" 
+                        class="submit-btn w-full px-8 py-4 text-xl font-bold text-white rounded-lg uppercase tracking-wide"
+                    >
+                        Get Early Access
+                    </button>
+                </form>
+                
+                <p class="text-sm text-white/60 mt-6 text-center">
+                    No spam. Just updates on our launch and early access opportunities.
+                </p>
+            </div>
+            
+            <!-- Footer -->
+            <div class="text-center mt-8 text-white/70 text-sm">
+                <p>&copy; 2025 Fishing Boat Jobs. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form handling
+        const form = document.getElementById('emailForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const email = formData.get('email');
+            const userType = formData.get('userType');
+            
+            // Replace this URL with your actual form endpoint
+            // Options: Formspree, Basin, Netlify Forms, or your own backend
+            const formEndpoint = 'https://formspree.io/f/YOUR_FORM_ID'; // You'll need to set this up
+            
+            try {
+                // For now, just show success (you'll need to configure the actual endpoint)
+                // Uncomment below when you have your form endpoint:
+                /*
+                const response = await fetch(formEndpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                */
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    form.style.display = 'none';
+                    
+                    // Store in localStorage as backup
+                    const submissions = JSON.parse(localStorage.getItem('emailSubmissions') || '[]');
+                    submissions.push({
+                        email,
+                        userType,
+                        timestamp: new Date().toISOString()
+                    });
+                    localStorage.setItem('emailSubmissions', JSON.stringify(submissions));
+                /*
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+                */
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
