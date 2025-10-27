@@ -112,7 +112,12 @@
                 </div>
                 
                 <!-- Email Form -->
-                <form id="emailForm" class="space-y-4">
+                <form id="emailForm" name="signups" method="POST" action="/success" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                    <input type="hidden" name="form-name" value="signups" />
+                    <!-- Honeypot for spam protection -->
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
                     <div>
                         <input 
                             type="email" 
@@ -159,7 +164,7 @@
     </div>
 
     <script>
-        // Form handling
+        // Form handling for Netlify Forms
         const form = document.getElementById('emailForm');
         const successMessage = document.getElementById('successMessage');
         
@@ -167,32 +172,22 @@
             e.preventDefault();
             
             const formData = new FormData(form);
-            const email = formData.get('email');
-            const userType = formData.get('userType');
-            
-            // Replace this URL with your actual form endpoint
-            // Options: Formspree, Basin, Netlify Forms, or your own backend
-            const formEndpoint = 'https://formspree.io/f/YOUR_FORM_ID'; // You'll need to set this up
             
             try {
-                // For now, just show success (you'll need to configure the actual endpoint)
-                // Uncomment below when you have your form endpoint:
-                /*
-                const response = await fetch(formEndpoint, {
+                const response = await fetch('/', {
                     method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
                 });
                 
                 if (response.ok) {
-                */
                     // Show success message
                     successMessage.style.display = 'block';
                     form.style.display = 'none';
                     
                     // Store in localStorage as backup
+                    const email = formData.get('email');
+                    const userType = formData.get('userType');
                     const submissions = JSON.parse(localStorage.getItem('emailSubmissions') || '[]');
                     submissions.push({
                         email,
@@ -200,11 +195,9 @@
                         timestamp: new Date().toISOString()
                     });
                     localStorage.setItem('emailSubmissions', JSON.stringify(submissions));
-                /*
                 } else {
                     alert('Something went wrong. Please try again.');
                 }
-                */
             } catch (error) {
                 console.error('Error:', error);
                 alert('Something went wrong. Please try again.');
