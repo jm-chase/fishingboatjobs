@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board - Fishing Boat Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Bebas+Neue', sans-serif;
+            letter-spacing: 0.05em;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231e293b" width="1200" height="800"/><g fill-opacity="0.1"><polygon fill="%23000" points="1200 0 900 800 1200 800"/><polygon fill="%23000" points="0 800 300 0 0 0"/><polygon fill="%23334155" points="600 400 800 800 1000 400"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+        
+        .job-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 2px solid #475569;
+            transition: all 0.3s ease;
+        }
+        
+        .job-card:hover {
+            border-color: #f97316;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+        }
+        
+        .filter-btn {
+            background: rgba(30, 41, 59, 0.5);
+            border: 2px solid #475569;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: #f97316;
+            border-color: #f97316;
+        }
+        
+        .apply-btn {
+            background: #f97316;
+            transition: all 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="hero-bg text-slate-100">
+    <nav class="bg-slate-900/50 backdrop-blur-sm border-b-2 border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl md:text-3xl font-bold text-orange-500 hover:text-orange-400 transition">
+                FISHING BOAT JOBS
+            </a>
+            <div class="flex gap-4">
+                <a href="index.html" class="px-4 py-2 text-slate-100 hover:text-orange-500 transition">Home</a>
+                <a href="jobs.html" class="px-4 py-2 text-orange-500 font-semibold">Jobs</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-5xl md:text-6xl font-bold text-slate-100 mb-4">
+                AVAILABLE POSITIONS
+            </h1>
+            <p class="text-xl text-slate-300">Find your next opportunity at sea</p>
+        </div>
+
+        <div class="mb-8 flex flex-wrap gap-3 justify-center">
+            <button class="filter-btn active px-6 py-2 rounded-lg font-semibold" data-filter="all">All Jobs</button>
+            <button class="filter-btn px-6 py-2 rounded-lg font-semibold" data-filter="deckhand">Deckhand</button>
+            <button class="filter-btn px-6 py-2 rounded-lg font-semibold" data-filter="captain">Captain</button>
+            <button class="filter-btn px-6 py-2 rounded-lg font-semibold" data-filter="engineer">Engineer</button>
+            <button class="filter-btn px-6 py-2 rounded-lg font-semibold" data-filter="cook">Cook</button>
+        </div>
+
+        <div id="jobsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="job-card p-6 rounded-lg backdrop-blur-sm" data-category="deckhand">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-orange-500">Experienced Deckhand</h3>
+                    <span class="bg-green-600 px-3 py-1 rounded-full text-sm font-semibold">Full-Time</span>
+                </div>
+                <p class="text-slate-300 mb-2"><strong>Vessel:</strong> F/V Pacific Storm</p>
+                <p class="text-slate-300 mb-2"><strong>Location:</strong> Alaska</p>
+                <p class="text-slate-300 mb-2"><strong>Fishery:</strong> Crab & Cod</p>
+                <p class="text-slate-300 mb-4"><strong>Pay:</strong> $300-400/day + share</p>
+                <p class="text-slate-400 mb-6">Seeking experienced deckhand for upcoming crab season. Must have 2+ years experience and valid TWIC card.</p>
+                <button class="apply-btn w-full px-4 py-3 rounded-lg font-bold text-white">Apply Now</button>
+            </div>
+
+            <div class="job-card p-6 rounded-lg backdrop-blur-sm" data-category="captain">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-orange-500">Captain</h3>
+                    <span class="bg-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Contract</span>
+                </div>
+                <p class="text-slate-300 mb-2"><strong>Vessel:</strong> F/V Sea Harvester</p>
+                <p class="text-slate-300 mb-2"><strong>Location:</strong> Washington</p>
+                <p class="text-slate-300 mb-2"><strong>Fishery:</strong> Tuna Longline</p>
+                <p class="text-slate-300 mb-4"><strong>Pay:</strong> $120,000-150,000/year</p>
+                <p class="text-slate-400 mb-6">Looking for licensed captain with 100-ton license. 5+ years experience required. Modern vessel with full electronics.</p>
+                <button class="apply-btn w-full px-4 py-3 rounded-lg font-bold text-white">Apply Now</button>
+            </div>
+
+            <div class="job-card p-6 rounded-lg backdrop-blur-sm" data-category="deckhand">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-orange-500">Entry Level Deckhand</h3>
+                    <span class="bg-green-600 px-3 py-1 rounded-full text-sm font-semibold">Full-Time</span>
+                </div>
+                <p class="text-slate-300 mb-2"><strong>Vessel:</strong> F/V Ocean Quest</p>
+                <p class="text-slate-300 mb-2"><strong>Location:</strong> Oregon</p>
+                <p class="text-slate-300 mb-2"><strong>Fishery:</strong> Salmon & Halibut</p>
+                <p class="text-slate-300 mb-4"><strong>Pay:</strong> $200-250/day</p>
+                <p class="text-slate-400 mb-6">Great opportunity for newcomers! Training provided. Must be physically fit and willing to learn.</p>
+                <button class="apply-btn w-full px-4 py-3 rounded-lg font-bold text-white">Apply Now</button>
+            </div>
+
+            <div class="job-card p-6 rounded-lg backdrop-blur-sm" data-category="engineer">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-orange-500">Marine Engineer</h3>
+                    <span class="bg-green-600 px-3 py-1 rounded-full text-sm font-semibold">Full-Time</span>
+                </div>
+                <p class="text-slate-300 mb-2"><strong>Vessel:</strong> F/V Northern Star</p>
+                <p class="text-slate-300 mb-2"><strong>Location:</strong> Alaska</p>
+                <p class="text-slate-300 mb-2"><strong>Fishery:</strong> Pollock Factory</p>
+                <p class="text-slate-300 mb-4"><strong>Pay:</strong> $85,000-110,000/year</p>
+                <p class="text-slate-400 mb-6">Factory trawler needs certified marine engineer. Must maintain all vessel systems and processing equipment.</p>
+                <button class="apply-btn w-full px-4 py-3 rounded-lg font-bold text-white">Apply Now</button>
+            </div>
+
+            <div class="job-card p-6 rounded-lg backdrop-blur-sm" data-category="cook">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-orange-500">Vessel Cook</h3>
+                    <span class="bg-green-600 px-3 py-1 rounded-full text-sm font-semibold">Full-Time</span>
+                </div>
+                <p class="text-slate-300 mb-2"><strong>Vessel:</strong> F/V Wild Catch</p>
+                <p class="text-slate-300 mb-2"><strong>Location:</strong> Alaska</p>
+                <p class="text-slate-300 mb-2"><strong>Fishery:</strong> Crab</p>
+                <p class="text-slate-300 mb-4"><strong>Pay:</strong> $250-300/day</p>
+                <p class="text-slate-400 mb-6">Prepare meals for crew of 8. Experience cooking in commercial kitchen preferred. 60+ day trips.</p>
+                <button class="apply-btn w-full px-4 py-3 rounded-lg font-bold text-white">Apply Now</button>
+            </div>
+
+            <div class="job-card p-6 rounded-lg backdrop-blur-sm" data-category="deckhand">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-orange-500">Lead Deckhand</h3>
+                    <span class="bg-green-600 px-3 py-1 rounded-full text-sm font-semibold">Full-Time</span>
+                </div>
+                <p class="text-slate-300 mb-2"><strong>Vessel:</strong> F/V Freedom</p>
+                <p class="text-slate-300 mb-2"><strong>Location:</strong> California</p>
+                <p class="text-slate-300 mb-2"><strong>Fishery:</strong> Squid & Sardine</p>
+                <p class="text-slate-300 mb-4"><strong>Pay:</strong> $350-450/day</p>
+                <p class="text-slate-400 mb-6">Lead position managing deck operations. 5+ years experience required. Excellent crew share program.</p>
+                <button class="apply-btn w-full px-4 py-3 rounded-lg font-bold text-white">Apply Now</button>
+            </div>
+
+            <div class="job-card p-6 rounded-lg backdrop-blur-sm" data-category="captain">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-orange-500">Relief Captain</h3>
+                    <span class="bg-purple-600 px-3 py-1 rounded-full text-sm font-semibold">Part-Time</span>
+                </div>
+                <p class="text-slate-300 mb-2"><strong>Vessel:</strong> Multiple Vessels</p>
+                <p class="text-slate-300 mb-2"><strong>Location:</strong> Pacific Northwest</p>
+                <p class="text-slate-300 mb-2"><strong>Fishery:</strong> Various</p>
+                <p class="text-slate-300 mb-4"><strong>Pay:</strong> $600-800/day</p>
+                <p class="text-slate-400 mb-6">Fleet needs relief captain for rotation. 100-ton license minimum. Flexible schedule.</p>
+                <button class="apply-btn w-full px-4 py-3 rounded-lg font-bold text-white">Apply Now</button>
+            </div>
+
+            <div class="job-card p-6 rounded-lg backdrop-blur-sm" data-category="engineer">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-orange-500">Assistant Engineer</h3>
+                    <span class="bg-green-600 px-3 py-1 rounded-full text-sm font-semibold">Full-Time</span>
+                </div>
+                <p class="text-slate-300 mb-2"><strong>Vessel:</strong> F/V Arctic Voyager</p>
+                <p class="text-slate-300 mb-2"><strong>Location:</strong> Alaska</p>
+                <p class="text-slate-300 mb-2"><strong>Fishery:</strong> Pollock</p>
+                <p class="text-slate-300 mb-4"><strong>Pay:</strong> $65,000-75,000/year</p>
+                <p class="text-slate-400 mb-6">Entry-level engineering position. Mechanical background required. Will train on vessel systems.</p>
+                <button class="apply-btn w-full px-4 py-3 rounded-lg font-bold text-white">Apply Now</button>
+            </div>
+
+            <div class="job-card p-6 rounded-lg backdrop-blur-sm" data-category="deckhand">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-orange-500">Processing Deckhand</h3>
+                    <span class="bg-green-600 px-3 py-1 rounded-full text-sm font-semibold">Full-Time</span>
+                </div>
+                <p class="text-slate-300 mb-2"><strong>Vessel:</strong> F/V Golden Harvest</p>
+                <p class="text-slate-300 mb-2"><strong>Location:</strong> Alaska</p>
+                <p class="text-slate-300 mb-2"><strong>Fishery:</strong> Cod Processing</p>
+                <p class="text-slate-300 mb-4"><strong>Pay:</strong> $275-325/day</p>
+                <p class="text-slate-400 mb-6">Work deck and processing operations. No experience necessary. Room and board provided.</p>
+                <button class="apply-btn w-full px-4 py-3 rounded-lg font-bold text-white">Apply Now</button>
+            </div>
+        </div>
+
+        <div class="text-center mt-12 bg-slate-800/30 backdrop-blur-sm border-2 border-slate-700 p-8 rounded-lg">
+            <h2 class="text-3xl font-bold text-orange-500 mb-4">Want to Post a Job?</h2>
+            <p class="text-slate-300 mb-6">Are you a vessel owner or fleet manager looking to hire crew?</p>
+            <a href="index.html" class="inline-block bg-orange-600 hover:bg-orange-500 px-8 py-3 rounded-lg font-bold text-white transition">
+                Contact Us
+            </a>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900/50 backdrop-blur-sm border-t-2 border-slate-700 mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-400">
+            <p>&copy; 2025 Fishing Boat Jobs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const jobCards = document.querySelectorAll('.job-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+
+                jobCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        const applyButtons = document.querySelectorAll('.apply-btn');
+        applyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                alert('Thank you for your interest! This is a sample job board. In a live version, this would open an application form or redirect to an application page.');
+            });
+        });
+    </script>
+</body>
+</html>
